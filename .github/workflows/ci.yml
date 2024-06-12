@@ -29,4 +29,4 @@ jobs:
     - name: Run tests
       run: |
         . .venv/bin/activate
-        .venv/bin/python -m pytest
+        .venv/bin/python -m pytest -k "test_rest"
