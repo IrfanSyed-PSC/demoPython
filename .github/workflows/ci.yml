@@ -23,8 +23,9 @@ jobs:
     - name: Install system dependencies
       run: |
         apt-get update
-        apt-get install -y --no-install-recommends docker.io
-         # Install dependencies required by Playwright
+        # Ensure curl is installed along with other dependencies
+        apt-get install -y --no-install-recommends docker.io curl wget software-properties-common
+        # Install dependencies required by Playwright
         apt-get install -y wget software-properties-common
         # Add Node.js to apt sources
         curl -sL https://deb.nodesource.com/setup_14.x | bash -
@@ -33,7 +34,6 @@ jobs:
         # Install system dependencies required by Playwright browsers
         apt-get install -y libgtk-3-0 libgbm-dev libnss3 libasound2
       shell: bash
-
     - name: Install Poetry
       run: |
         pip install poetry
