@@ -28,7 +28,7 @@ jobs:
         # Install dependencies required by Playwright
         apt-get install -y wget software-properties-common
         # Add Node.js to apt sources
-        curl -sL https://deb.nodesource.com/setup_14.x | bash -
+        curl -sL https://deb.nodesource.com/setup_18.x | bash -
         # Install Node.js and npm
         apt-get install -y nodejs
         # Install system dependencies required by Playwright browsers
