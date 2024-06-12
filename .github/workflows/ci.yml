@@ -25,7 +25,8 @@ jobs:
         poetry config virtualenvs.in-project true
         poetry lock --no-update
         poetry install --no-ansi --no-root
-        source .venv/bin/activate
 
     - name: Run tests
-      run: pytest
+      run: |
+        . .venv/bin/activate
+        pytest
