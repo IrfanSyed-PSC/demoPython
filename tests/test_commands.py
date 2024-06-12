@@ -28,6 +28,6 @@ def test_docker_list_images():
 ## This test might fail if you don't have the image locally
 def test_docker_list_image():
     logging.info("Testing DockerManager.list_image")
-    #assert len(docker.list_image('influxdb')) > 0
+    assert len(docker.list_image('alpine')) > 0
 
     
