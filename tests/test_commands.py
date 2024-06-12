@@ -1,10 +1,10 @@
 import logging
 from core.utils.docker_cmd import DockerManager
-docker = DockerManager()
+
 
 
 def test_docker_list_containers():
-
+    docker = DockerManager()
     logging.info("Testing DockerManager.list_containers")
     containers = docker.list_containers()
     logging.info(containers)
@@ -12,7 +12,7 @@ def test_docker_list_containers():
 
 
 def test_docker_list_images():
-
+    docker = DockerManager()
     logging.info("Testing DockerManager.list_images")
     logging.debug(docker.list_images())
 
@@ -28,6 +28,7 @@ def test_docker_list_images():
 
 ## This test might fail if you don't have the image locally
 def test_docker_list_image():
+    docker = DockerManager()
     logging.info("Testing DockerManager.list_image")
     assert len(docker.list_image('influxdb')) > 0
 
