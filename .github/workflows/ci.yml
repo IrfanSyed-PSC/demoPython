@@ -24,6 +24,14 @@ jobs:
       run: |
         apt-get update
         apt-get install -y --no-install-recommends docker.io
+         # Install dependencies required by Playwright
+        apt-get install -y wget software-properties-common
+        # Add Node.js to apt sources
+        curl -sL https://deb.nodesource.com/setup_14.x | bash -
+        # Install Node.js and npm
+        apt-get install -y nodejs
+        # Install system dependencies required by Playwright browsers
+        apt-get install -y libgtk-3-0 libgbm-dev libnss3 libasound2
       shell: bash
 
     - name: Install Poetry
@@ -35,6 +43,13 @@ jobs:
         poetry config virtualenvs.in-project true
         poetry lock --no-update
         poetry install --no-ansi --no-root
+    
+    - name: Install Playwright and browsers
+      run: |
+        # Install Playwright Python package
+        pip install playwright
+        # Install Playwright browsers
+        python -m playwright install
 
     - name: Run tests
       run: |
