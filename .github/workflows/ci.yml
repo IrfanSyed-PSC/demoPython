@@ -1,0 +1,31 @@
+name: Demo Python 
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11-slim
+      options: --user root
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Poetry
+      run: |
+        pip install poetry
+
+    - name: Install dependencies
+      run: |
+        poetry config virtualenvs.in-project true
+        poetry lock --no-update
+        poetry install --no-ansi --no-root
+        source .venv/bin/activate
+
+    - name: Run tests
+      run: pytest
